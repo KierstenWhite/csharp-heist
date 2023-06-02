@@ -63,19 +63,34 @@ namespace Heist
                 Console.WriteLine("----------------------------");
 
                 //Display each team member's information.
+                //Stop displaying each team member's information.
+                // foreach (var member in teamMembers)
+                //     Console.WriteLine($"{member.Name}, Skill Level: {member.SkillLevel}, Courage Factor: {member.CourageFactor}");
+
+                //Store a value for the bank's difficulty level. Set this value to 100.
+                int bankDifficulty = 100;
+
+                //Sum the skill levels of the team. Save that number.
+                float totalTeamSkillLevel = 0;
+
+                //Compare the number with the bank's difficulty level.
                 foreach (var member in teamMembers)
-                    Console.WriteLine($"{member.Name}, Skill Level: {member.SkillLevel}, Courage Factor: {member.CourageFactor}");
+                {
+                    totalTeamSkillLevel += member.SkillLevel;
+                }
+                if (totalTeamSkillLevel >= bankDifficulty) 
+                {
+                    Console.WriteLine("Your team skill level is enough to complete this bank job!"); //If the team's skill level is greater than or equal to the bank's difficulty level, Display a success message,
+                }
+                else
+                {
+                    Console.WriteLine("Your total team skill level is too low to complete this bank job."); //otherwise display a failure message.
+                }
         }
     }
 }
-/*
-Phase Three
-The program should be updated to...
 
-Stop displaying each team member's information.
-Store a value for the bank's difficulty level. Set this value to 100.
-Sum the skill levels of the team. Save that number.
-Compare the number with the bank's difficulty level. If the team's skill level is greater than or equal to the bank's difficulty level, Display a success message, otherwise display a failure message.
+/*
 Phase Four
 The program should be updated to...
 
