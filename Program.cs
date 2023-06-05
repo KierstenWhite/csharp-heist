@@ -67,6 +67,14 @@ namespace Heist
                 // foreach (var member in teamMembers)
                 //     Console.WriteLine($"{member.Name}, Skill Level: {member.SkillLevel}, Courage Factor: {member.CourageFactor}");
 
+                //After the user enters the team information, prompt them to enter the number of trial runs the program should perform.
+                Console.WriteLine("Enter the number of trial runs you'd like to perform.");
+                int trialRuns = int.Parse(Console.ReadLine());
+
+
+                //Loop through the difficulty / skill level calculation based on the user-entered number of trial runs. Choose a new luck value each time.
+                for (int i=0; i < trialRuns; i++)
+                {
                 //Create a random number between -10 and 10 for the heist's luck value.
                 int randomLuckValue = new Random().Next(-10, 10);
  
@@ -81,6 +89,9 @@ namespace Heist
                 {
                     totalTeamSkillLevel += member.SkillLevel;
                 }
+
+                Console.WriteLine($"Trial {i + 1}:");
+
                 if (totalTeamSkillLevel >= bankDifficulty) 
                 {
                     //Before displaying the success or failure message, display a report that shows.
@@ -97,19 +108,14 @@ namespace Heist
                     //otherwise display a failure message.
                     Console.WriteLine($"The team's combined skill level is {totalTeamSkillLevel}. The bank difficulty level is {bankDifficulty}. Your total team skill level is too low to complete this bank job."); 
                 }
-
+                }
                 
 
         }
     }
 }
 /*
-Phase Five
-The program should be updated to...
 
-Run the scenario multiple times.
-After the user enters the team information, prompt them to enter the number of trial runs the program should perform.
-Loop through the difficulty / skill level calculation based on the user-entered number of trial runs. Choose a new luck value each time.
 Phase Six
 The program should be updated to...
 
