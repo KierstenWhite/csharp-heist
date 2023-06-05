@@ -10,9 +10,9 @@ namespace Heist
         //Create a way to store a single team member. A team member will have a name, a skill Level and a courage factor. 
         public class TeamMember 
         {
-            public string Name { get; set; }
+            public string? Name { get; set; }
             //The skill Level will be a positive integer
-            public float SkillLevel { get; set; }
+            public int SkillLevel { get; set; }
             //and the courage factor will be a decimal between 0.0 and 2.0.
             public decimal CourageFactor { get; set; }
         }
@@ -38,7 +38,7 @@ namespace Heist
 
                 //Prompt the user to enter a team member's skill level and save that skill level with the name.
                 Console.WriteLine("Enter the team member's skill (should be a positive integer):");
-                float teamMemberSkillLevel = float.Parse(Console.ReadLine());
+                int teamMemberSkillLevel = int.Parse(Console.ReadLine());
 
                 //Prompt the user to enter a team member's courage factor and save that courage factor with the name.
                 Console.WriteLine("Enter the team member courage factor (should be a decimal between 0.0 - 2.0):");
@@ -67,11 +67,14 @@ namespace Heist
                 // foreach (var member in teamMembers)
                 //     Console.WriteLine($"{member.Name}, Skill Level: {member.SkillLevel}, Courage Factor: {member.CourageFactor}");
 
+                //Create a random number between -10 and 10 for the heist's luck value.
+                int randomLuckValue = new Random().Next(-10, 10);
+ 
                 //Store a value for the bank's difficulty level. Set this value to 100.
-                int bankDifficulty = 100;
+                int bankDifficulty = 100 + randomLuckValue; //Add random luck number to the bank's difficulty level.
 
                 //Sum the skill levels of the team. Save that number.
-                float totalTeamSkillLevel = 0;
+                int totalTeamSkillLevel = 0;
 
                 //Compare the number with the bank's difficulty level.
                 foreach (var member in teamMembers)
@@ -80,25 +83,27 @@ namespace Heist
                 }
                 if (totalTeamSkillLevel >= bankDifficulty) 
                 {
-                    Console.WriteLine("Your team skill level is enough to complete this bank job!"); //If the team's skill level is greater than or equal to the bank's difficulty level, Display a success message,
+                    //Before displaying the success or failure message, display a report that shows.
+                    //The bank's difficulty level
+                    //The team's combined skill level
+                    //If the team's skill level is greater than or equal to the bank's difficulty level, Display a success message,
+                    Console.WriteLine($"The team's combined skill level is {totalTeamSkillLevel}. The bank difficulty level is {bankDifficulty}. Your team skill level is enough to complete this bank job!"); 
                 }
                 else
                 {
-                    Console.WriteLine("Your total team skill level is too low to complete this bank job."); //otherwise display a failure message.
+                    //Before displaying the success or failure message, display a report that shows.
+                    //The bank's difficulty level
+                    //The team's combined skill level
+                    //otherwise display a failure message.
+                    Console.WriteLine($"The team's combined skill level is {totalTeamSkillLevel}. The bank difficulty level is {bankDifficulty}. Your total team skill level is too low to complete this bank job."); 
                 }
+
+                
+
         }
     }
 }
-
 /*
-Phase Four
-The program should be updated to...
-
-Create a random number between -10 and 10 for the heist's luck value.
-Add this number to the bank's difficulty level.
-Before displaying the success or failure message, display a report that shows.
-The team's combined skill level
-The bank's difficulty level
 Phase Five
 The program should be updated to...
 
