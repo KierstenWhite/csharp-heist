@@ -1,6 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
+/*
+Notes from Tommy's Review:
+- Could have used a double instead of decimal because a double takes less places past the decimal and less memory
+*/
+
 namespace Heist
 {
     public class ThePlan
